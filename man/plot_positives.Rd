@@ -5,7 +5,7 @@
 \title{Plot Multiple Positives}
 \usage{
 plot_positives(seurat_object, markers, marker_names = NULL,
-  alpha_neg = 0.1, reduction = "umap")
+  alpha_neg = 0.1, reduction = "umap", verbose = FALSE)
 }
 \arguments{
 \item{seurat_object}{the object to retrieve the data from.}
@@ -17,6 +17,8 @@ plot_positives(seurat_object, markers, marker_names = NULL,
 \item{alpha_neg}{transparency value for negative points.}
 
 \item{reduction}{dimensionality reduction, could be \code{c('pca','tsne','umap')}}
+
+\item{verbose}{whether to print IDs of positive cells.}
 }
 \description{
 This function plots the cells that are positive at multiple markers at the same time.

@@ -6,12 +6,13 @@
 #' @param marker_names optional names for markers
 #' @param alpha_neg transparency value for negative points.
 #' @param reduction dimensionality reduction, could be \code{c('pca','tsne','umap')}
+#' @param verbose whether to print IDs of positive cells.
 #' @keywords positive cells
 #' @export
 #' @examples
 #' plot_positives()
 
-plot_positives = function(seurat_object,markers,marker_names=NULL,alpha_neg = 0.1,reduction = 'umap'){
+plot_positives = function(seurat_object,markers,marker_names=NULL,alpha_neg = 0.1,reduction = 'umap',verbose = FALSE){
   
   reductions = list('pca' = c('PC_1','PC_2'),'tsne' = c('tSNE_1','tSNE_2'),"umap" = c('UMAP_1','UMAP_2'))
   
@@ -31,10 +32,15 @@ plot_positives = function(seurat_object,markers,marker_names=NULL,alpha_neg = 0.
   
   p = ggplot(plot_data,aes_string(x = colnames(plot_data)[1],y = colnames(plot_data)[2]))+
     geom_point(aes(alpha = transparency,col = col))+
-    scale_alpha_manual(values = alphas, guide = F)+
+    scale_alpha_manual(values = alphas, guides= F)+
     scale_color_gradient(low = "grey", high = "red")+
     theme_bw()+
+    theme(legend.position = 'none')+
     labs(subtitle = paste0(sum(plot_data$col),' cells'))+
     ggtitle(paste0(marker_labels,collapse = '/','+'))
   return(p)
+  
+  if(verbose){
+    print(rownames(subset(plot_data, col > 0)))
+  }
 } 

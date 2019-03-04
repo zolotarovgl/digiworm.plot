@@ -8,6 +8,7 @@
 #' @export
 #' @examples
 #' plot_tsne()
+#' @import Seurat
 
 plot_tsne = function(subset, marker,alpha_neg){
   plot_data = coordinates[[subset]]
@@ -34,6 +35,7 @@ plot_tsne = function(subset, marker,alpha_neg){
 #' @export
 #' @examples
 #' plot_digiworm()
+#' @import Seurat
 
 plot_digiworm = function(marker,alpha_neg){
   p1 = plot_tsne(1,marker,alpha_neg)+ggtitle(paste0(marker,' all'))
