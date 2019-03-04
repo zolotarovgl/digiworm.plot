@@ -1,0 +1,10 @@
+Package: digiworm.plot
+Title: Useful plotting functions for Seurat objects
+Version: 0.0.0.9000
+Authors@R: person("Grygoriy", "Zolotarov", email = "zolotaryovgl@gmail.com", role = c("aut", "cre"))
+Description: Useful plotting functions for Seurat objects.
+Depends: R (>= 3.5.2)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1.9000
