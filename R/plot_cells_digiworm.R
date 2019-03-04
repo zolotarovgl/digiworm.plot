@@ -27,7 +27,7 @@ plot_cells_digiworm = function(cells,alpha_neg = 0.1){
     return(p)
   }
   
-  out = lapply(1:4, FUN = function(i) plot_subset(i,Cells(cluster)))
+  out = lapply(1:4, FUN = function(i) plot_subset(i,cells = cells ))
   
   return(do.call('grid.arrange',out))
 }
