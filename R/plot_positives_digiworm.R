@@ -14,7 +14,7 @@ plot_positives_digiworm = function(seurat_object,markers,marker_names = NULL,alp
   
   cell_data  = FetchData(seurat_object,vars = markers)
   
-  plot_subset = function(subset,alpha_neg = 0.1){
+  plot_subset = function(subset,alpha_neg = alpha_neg){
     plot_data = coordinates[[subset]]
     
     # positive cells 
