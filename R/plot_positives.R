@@ -32,7 +32,7 @@ plot_positives = function(seurat_object,markers,marker_names=NULL,alpha_neg = 0.
   
   p = ggplot(plot_data,aes_string(x = colnames(plot_data)[1],y = colnames(plot_data)[2]))+
     geom_point(aes(alpha = transparency,col = col))+
-    scale_alpha_manual(values = alphas, guides= F)+
+    scale_alpha_manual(values = alphas)+
     scale_color_gradient(low = "grey", high = "red")+
     theme_bw()+
     theme(legend.position = 'none')+
