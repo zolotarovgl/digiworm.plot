@@ -14,7 +14,7 @@ plot_positives_digiworm = function(seurat_object,markers,marker_names = NULL,alp
   
   cell_data  = FetchData(seurat_object,vars = markers)
   
-  plot_subset = function(subset,alpha_neg = alpha_neg){
+  plot_subset = function(subset,alpha_neg = 0.1){
     plot_data = coordinates[[subset]]
     
     # positive cells 
@@ -35,7 +35,7 @@ plot_positives_digiworm = function(seurat_object,markers,marker_names = NULL,alp
     return(p)
   }
   
-  out = lapply(1:4, FUN = function(i) plot_subset(i))
+  out = lapply(1:4, FUN = function(i) plot_subset(i,alpha_neg = alpha_neg))
   
   if(is.null(marker_names)){
     marker_labels = gsub('-','',str_extract(markers,'-[0-9]+-'))
