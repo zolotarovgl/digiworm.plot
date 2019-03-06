@@ -22,13 +22,15 @@ plot_expression = function(seurat_object,marker,alpha_neg = 0.1,reduction = 'uma
   # set transparency values:
   alphas = c('pos' = 1,'neg'= alpha_neg)
   
+  plot_data$marker[plot_data$marker==0] = NA
+  
   p = ggplot(plot_data,aes_string(x = colnames(plot_data)[1],y = colnames(plot_data)[2]))+
     geom_point(aes(alpha = transparency,col = marker))+
     scale_alpha_manual(values = alphas, guide = F)+
-    scale_color_gradient(low = "grey", high = "red")+
+    scale_color_gradient(na.value = 'grey',low = "red", high = "yellow")+
     theme_bw()+
     ggtitle(paste0(marker))
   return(p)
-} 
+}
 # dimenshionality reduction plot - the default Seurat function doesn't change the transparency of the points based on the expression - many 
 # positive cells are overlapped by negative ones
