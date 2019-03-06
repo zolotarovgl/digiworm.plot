@@ -4,13 +4,15 @@
 \alias{plot_expression}
 \title{Plot Expression}
 \usage{
-plot_expression(seurat_object, marker, alpha_neg = 0.1,
-  reduction = "umap")
+plot_expression(seurat_object, marker, expr.threshold = 0,
+  alpha_neg = 0.1, reduction = "umap")
 }
 \arguments{
 \item{seurat_object}{the object to retrieve the data from.}
 
 \item{marker}{a gene to plot.}
+
+\item{expr.threshold}{the threshold of expression below which cells are plotted as negative.}
 
 \item{alpha_neg}{transparency value for negative points.}
 
