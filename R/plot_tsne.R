@@ -22,7 +22,7 @@ plot_tsne = function(subset, marker,alpha_neg){
   plot_data$marker[plot_data$marker<=0]=NA
   p = ggplot(plot_data,aes(x = tSNE_1,y = tSNE_2))+
     geom_point(aes(alpha = transparency,col = marker))+scale_alpha_manual(values = alphas,guide = F)+
-    scale_color_gradient(na.value = 'grey',low = "red", high = "yellow")
+    scale_color_gradient(na.value = 'grey',low = "yellow", high = "red")
   return(p)
 }
 
