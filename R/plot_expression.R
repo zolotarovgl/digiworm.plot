@@ -23,7 +23,9 @@ plot_expression = function(seurat_object,marker,expr.threshold = 0,alpha_neg = 0
   # set transparency values:
   alphas = c('pos' = 1,'neg'= alpha_neg)
   
+  #apply threshold
   plot_data$marker[plot_data$marker<=expr.threshold] = NA
+  plot_data$transparency[plot_data$marker<=expr.threshold] = 'neg'
   
   p = ggplot(plot_data,aes_string(x = colnames(plot_data)[1],y = colnames(plot_data)[2]))+
     geom_point(aes(alpha = transparency,col = marker))+
