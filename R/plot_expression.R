@@ -3,6 +3,7 @@
 #' This function plots the expression of the feature across cells. It's analogous to the \code{Seurat::FeaturePlot()} but it changes the transparency of negative cells so all positive ones are visible.
 #' @param seurat_object the object to retrieve the data from.
 #' @param marker a gene to plot.
+#' @param expr.threshold the threshold of expression below which cells are plotted as negative.
 #' @param alpha_neg transparency value for negative points.
 #' @param reduction dimensionality reduction, could be \code{c('pca','tsne','umap')}
 #' @keywords expression
@@ -10,7 +11,7 @@
 #' @examples
 #' cluster_data()
 
-plot_expression = function(seurat_object,marker,alpha_neg = 0.1,reduction = 'umap'){
+plot_expression = function(seurat_object,marker,expr.threshold = 0,alpha_neg = 0.1,reduction = 'umap'){
   
   reductions = list('pca' = c('PC_1','PC_2'),'tsne' = c('tSNE_1','tSNE_2'),"umap" = c('UMAP_1','UMAP_2'))
   
@@ -22,7 +23,7 @@ plot_expression = function(seurat_object,marker,alpha_neg = 0.1,reduction = 'uma
   # set transparency values:
   alphas = c('pos' = 1,'neg'= alpha_neg)
   
-  plot_data$marker[plot_data$marker==0] = NA
+  plot_data$marker[plot_data$marker<=expr.thresholds] = NA
   
   p = ggplot(plot_data,aes_string(x = colnames(plot_data)[1],y = colnames(plot_data)[2]))+
     geom_point(aes(alpha = transparency,col = marker))+
